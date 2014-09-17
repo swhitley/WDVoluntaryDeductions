@@ -67,4 +67,3 @@ Example:
 
 ![Screenshot](/Capture.PNG?raw=true "")
 
-**End**
