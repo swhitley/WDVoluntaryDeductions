@@ -1,4 +1,4 @@
-﻿WD Voluntary Deductions
+WD Voluntary Deductions
 =======================
 
 [MIT License](http://en.wikipedia.org/wiki/MIT_License)

@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		Capture.PNG = Capture.PNG
 		Integration__Voluntary_Deductions.pdf = Integration__Voluntary_Deductions.pdf
-		WDVoluntaryDeductions\readme.md = WDVoluntaryDeductions\readme.md
+		readme.md = readme.md
 	EndProjectSection
 EndProject
 Global
