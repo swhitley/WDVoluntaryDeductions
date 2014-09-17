@@ -64,4 +64,7 @@ Example:
 1. Open */controllers/voluntarydeductionscontroller.cs*
 2. Modify the EmployeeIDLookup() method for your environment.  The existing method provides a sample translation from the network username to the employee id.  It assumes a local database contains the translation.
 
+
+![Screenshot](blob/master/Capture.PNG?raw=true "")
+
 **End**
