@@ -1,0 +1,100 @@
+﻿@using WDVoluntaryDeductions.Models;
+@model WDVoluntaryDeductions.Models.Payroll_Input
+@{
+    ViewBag.Title = "Voluntary Deductions";
+    
+    //Update the list of deductions for the dropdown below.
+    //  {"Deduction Code", "Deduction Description"}
+    ViewBag.DeductionCodes = new Dictionary<string, string>()
+    {
+        {"P-BILL", "Personal Bills"}
+    };    
+}
+<hgroup class="title">
+    <h1>@ViewBag.Title</h1>
+</hgroup>
+
+<p>Review your list of <strong>Current Voluntary Deductions</strong> (below).</p>
+<h3>Add a Deduction or Update an Existing Deduction</h3>
+<ol>
+<li>Select a deduction.</li>
+<li>Enter the amount to deduct (do not include commas or dollar signs).<br />
+<i>Note that you are <strong>replacing</strong> the existing amount if the deduction was previously entered for this pay period.</i>
+</li>
+<li>Click <strong>Save</strong> and the amount to be deducted will be displayed under Current Voluntary Deductions.<br />
+<i>A message will display to indicate that the deduction has been added or updated.</i>
+</li>
+</ol>
+<p>This is a one-time deduction and will be deducted from the next available payroll.</p>
+<p>Please contact the <a href="mailto:payroll@gms.com">Payroll Administrator</a> with questions or issues.</p>
+<br />
+    <fieldset>
+<legend>Current Voluntary Deductions</legend>
+    <table>
+    @if (ViewBag.Payroll != null && ViewBag.Payroll.Payroll_Inputs != null && ViewBag.Payroll.Payroll_Inputs.Count > 0)
+    {
+        <tr><th>Deduction</th><th>Amount</th></tr>
+        foreach (Payroll_Input payInput in ViewBag.Payroll.Payroll_Inputs)
+        {
+            <tr><td>@payInput.DEDUCTION</td><td>@decimal.Parse(@payInput.AMOUNT).ToString("$0.00")</td></tr>
+        }
+    }
+    else
+    {
+            <tr><td colspan="2">None</td></tr>
+    }
+    </table>
+</fieldset>
+    <br />
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <fieldset>
+<legend>Add or Update a Deduction</legend>
+    <table>
+    <tr>
+        <th>@Html.LabelFor(model => model.DEDUCTION)</th>
+        <th style="text-align:right;padding-right:25px;">@Html.LabelFor(model => model.AMOUNT)</th>
+    </tr>
+    <tr>
+        <td>@Html.DropDownListFor(m => m.DEDCD, new SelectList(ViewBag.DeductionCodes, "Key", "Value"))</td>
+        <td style="width:150px;text-align:right;"><span style="font-size:20px;text-align:right;">$&nbsp;&nbsp;</span>@Html.TextBoxFor(model => model.AMOUNT, new { style = "width:70px;margin:0px;" })</td>
+    </tr>
+        <tr>
+            <td></td>
+            <td style="text-align:right"><input id="btnSave" name="btnSave" type="submit" value="Save"/><input id="btnSaveDummy" type="button" value="Save" disabled="disabled" style="display:none;color:gray;cursor:default;"/></td>
+        </tr>
+        </table>
+    <p class="@ViewBag.MessageStyle">@ViewBag.Message</p>
+        </fieldset>
+}
+
+
+@section scripts {
+
+<script>
+    $(document).ready(function(){
+        $('#btnSave').show();
+        $('#btnSaveDummy').hide();
+        $("#AMOUNT").blur(function () {
+            var regex = /^(\d*\.\d{1,2}|\d+)$/;
+            if (regex.test($(this).val())) {
+                $(this).css("border-color", "#FFFFFF");
+            } else {
+                $(this).css("border-color", "#FF0000");
+            }
+        });
+    });
+    $(function () {
+        //Prevent Double-posting
+        $('form').submit(function () {
+            $('#btnSaveDummy').show();
+            $('#btnSave').hide();
+        });
+    });
+
+    function isNumeric(id, border) {
+        var numeric = document.getElementById(id);
+    }
+</script>
+}
