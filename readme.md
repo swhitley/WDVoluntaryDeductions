@@ -65,5 +65,21 @@ Example:
 2. Modify the EmployeeIDLookup() method for your environment.  The existing method provides a sample translation from the network username to the employee id.  It assumes a local database contains the translation.
 
 
+Ongoing Pay Input vs. One-time Pay Input
+----------------------------------------
+The project is setup for one-time input, however, a few minor coding changes will allow the creation of ongoing pay input.
+
+```
+//Code changes for ongoing pay input.
+//Commented out the end date and changed ongoing_input to true.
+//Added Ongoing_InputSpecified
+input.Start_Date = effDt;
+//input.End_Date = effDt; 
+//input.End_DateSpecified = true; 
+input.Ongoing_Input = true;
+input.Ongoing_InputSpecified = true;
+```
+
+
 ![Screenshot](/Capture.PNG?raw=true "")
 
