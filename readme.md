@@ -31,7 +31,8 @@ Example:
     <add key="WD_CRED" value="ISU_User,ou8onetw0!" />
     <add key="WD_TENANT" value="gms" />
     <add key="WD_VERSION" value="v22" />
-    <add key="WD_VOL_DEDUCTIONS_URL" value="https://wd5-impl-services1.workday.com/ccx/service/customreport2/%%tenant%%/lmcneil/Integration__Voluntary_Deductions?Worker!Employee_ID=%%employeeId%%&amp;format=json" />
+    <add key="WD_VOL_DEDUCTIONS_URL" value="https://wd5-impl-services1.workday.com/ccx/service/customreport2/%%tenant%%/lmcneil/
+    Integration__Voluntary_Deductions?Worker!Employee_ID=%%employeeId%%&amp;format=json" />
     <!-- WD Settings -->      
 
 	Note: You will need to add the replacement %%variables%% to the url for your report.
@@ -40,7 +41,9 @@ Example:
 
 	Example:
 
-     <endpoint address="https://wd5-impl-services1.workday.com/ccx/service/gms/Payroll/v20" binding="customBinding" bindingConfiguration="Payroll_ResourcesBinding" contract="WD_Payroll.PayrollPort" name="Payroll" />
+     <endpoint address="https://wd5-impl-services1.workday.com/ccx/service/
+     gms/Payroll/v20" binding="customBinding" bindingConfiguration="Payroll_ResourcesBinding" 
+     contract="WD_Payroll.PayrollPort" name="Payroll" />
 
 
 **3)** Configure the Deductions Dropdown in your index.cshtml page.
