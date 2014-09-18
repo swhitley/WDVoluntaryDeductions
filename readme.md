@@ -6,7 +6,7 @@ WD Voluntary Deductions
 Visual Studio 2012, C#, MVC
 
 This is a sample web app for enabling self-service of pay input for voluntary deductions in **Workday**.  
-One-time deductions are allowed, however, this app does not create ongoing deductions.
+One-time deductions are created by default. The code can be modified to allow ongoing pay input (see below).
 
 This is a sample only.  Feel free to modify it for your needs and test it thoroughly in your environment.
 
